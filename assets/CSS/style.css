@@ -1,5 +1,5 @@
 * {
-
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -11,25 +11,35 @@ body {
 }
 
 #quiz {
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 #question {
     text-align: center;
+    font-size: 3vw;
     background-color: #b8bfff;
+    margin: 5% 0 5% 0;
 }
 
 #quiz button {
-    background-color: #b8bfff;
+    background-color: #dec9f0;
     color: #202020;
     border: 0;
     border-radius: 20px;
     height: 100px;
     width: 40%;
     display: block;
-    margin: 10px auto;]
+    margin: 20px auto;
+    font-size: 2vw;
 }
 
 #quiz button:hover {
     cursor: pointer;
+}
+
+#timerH2 {
+    position: relative;
+    text-align: center;
+    font-size: 4vw;
+    padding-top: 200px;
 }
