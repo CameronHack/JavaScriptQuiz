@@ -1,0 +1,30 @@
+* {
+
+}
+
+:root {
+
+}
+
+body {
+    background-color: #ffeed8;
+}
+
+#quiz {
+    background-color: aqua;
+}
+
+#quiz button {
+    background-color: #b8bfff;
+    color: #202020;
+    border: 0;
+    border-radius: 20px;
+    height: 100px;
+    width: 40%;
+    display: block;
+    margin: 10px auto;]
+}
+
+#quiz button:hover {
+    cursor: pointer;
+}
