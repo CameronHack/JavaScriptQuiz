@@ -10,6 +10,10 @@ body {
     background-color: #ffeed8;
 }
 
+.hidden {
+    display: none;
+}
+
 #quiz {
     /* background-color: aqua; */
 }

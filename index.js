@@ -1,11 +1,11 @@
 // grabbing the location of 
-const quizDiv = document.querySelector('#quiz')
-const question = document.querySelector('#question')
-const questionButton1 = document.querySelector('#answer1')
-const questionButton2 = document.querySelector('#answer2')
-const questionButton3 = document.querySelector('#answer3')
-const questionButton4 = document.querySelector('#answer4')
-const timerH2 = document.querySelector('#timerH2')
+let quizDiv = document.querySelector('#quiz')
+let question = document.querySelector('#question')
+let questionButton1 = document.querySelector('#answer1')
+let questionButton2 = document.querySelector('#answer2')
+let questionButton3 = document.querySelector('#answer3')
+let questionButton4 = document.querySelector('#answer4')
+let timerH2 = document.querySelector('#timerH2')
 
 let highScores = JSON.parse(localStorage.getItem('highScores')) || []
 // starting time allowed for the test
@@ -41,10 +41,21 @@ let questions = [
 
 
 // placeholder
-renderQuestion()
+// renderQuestion()
+
+
+
+
+
+
+
+
+
+
 
 function renderQuestion(){
-    
+
+    quizDiv.setAttribute("class", "")
     question.textContent = questions[currentQuestion].question
     questionButton1.textContent = questions[currentQuestion].answers[0]
     questionButton2.textContent = questions[currentQuestion].answers[1]
