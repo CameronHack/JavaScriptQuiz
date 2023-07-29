@@ -31,8 +31,6 @@ let questions = [
 ]
 
 
-// placeholder
-
 
 startId.addEventListener('click', function(e){
     if (e.target.matches('button')){
@@ -41,66 +39,66 @@ startId.addEventListener('click', function(e){
 })
 
 function startQuiz(){
+    // hides the start menu
     startId.setAttribute("class", "hidden")
+    // shows the quiz
     quizDiv.setAttribute("class", "")
+    // renders the question when quiz starts
     renderQuestion()
-    // timer countdown
-    timerH2.textContent = timer + ' seconds left'
-    let timerId = setInterval(function(){
-        timer--
-        timerH2.textContent = timer + ' seconds left'
-        console.log(timer)
-        if (timer <= 0) {
-            clearInterval(timerId)
-            // gameOver()
+    
+    // Renders current question and its answers
+    function renderQuestion(){
+        question.textContent = questions[currentQuestion].question
+        questionButton1.textContent = questions[currentQuestion].answers[0]
+        questionButton2.textContent = questions[currentQuestion].answers[1]
+        questionButton3.textContent = questions[currentQuestion].answers[2]
+        questionButton4.textContent = questions[currentQuestion].answers[3]
+        console.log('render question' + questions[currentQuestion].correctAnswer)
+    }
+    
+    // event listener
+    quizDiv.addEventListener('click', function(e){
+        // making sure the click only applies to the button
+        if (e.target.matches('button')){
+            if (questions[currentQuestion].correctAnswer === e.target.innerText) {
+                console.log('TRUE')
+            } else {
+                timer -= 10
+                console.log('FALSE')
+            }
+            // moves to the next question
+            currentQuestion++
+
+            // if you answer all the questions and havent run out of time this ends the game too
+            if (currentQuestion > questions.length-1){
+                gameOver()
+                console.log("NO MORE QUESTIONS")
+            } else {
+                // rerenders the question
+                renderQuestion()
+            }
         }
-    }, 1000)
+    })
+    
+        // timer countdown... starts when quiz starts
+        timerH2.textContent = timer + ' seconds left'
+        let timerId = setInterval(function(){
+            timer--
+            timerH2.textContent = timer + ' seconds left'
+            console.log(timer)
+            if (timer <= 0) {
+                clearInterval(timerId)
+                gameOver()
+            }
+        }, 1000)
+    
+
 }
 
 function gameOver(){
-    startId.setAttribute("class", "hidden")
-    quizDiv.setAttribute("class", "")
-
-
-
+    quizDiv.setAttribute("class", "hidden")
 }
 
 
-
-
-
-
-function renderQuestion(){
-    
-    question.textContent = questions[currentQuestion].question
-    questionButton1.textContent = questions[currentQuestion].answers[0]
-    questionButton2.textContent = questions[currentQuestion].answers[1]
-    questionButton3.textContent = questions[currentQuestion].answers[2]
-    questionButton4.textContent = questions[currentQuestion].answers[3]
-    console.log('render question' + questions[currentQuestion].correctAnswer)
-    
-}
-
-
-
-// event listener
-quizDiv.addEventListener('click', function(e){
-    // making sure the click only applies to the button
-    if (e.target.matches('button')){
-        
-        if (questions[currentQuestion].correctAnswer === e.target.innerText) {
-            console.log('TRUE')
-        } else {
-            timer -= 10
-            console.log('FALSE')
-        }
-        // moves to the next question
-        currentQuestion++
-        // rerenders the question
-        renderQuestion()
-
-    }
-
-})
 
 // localStorage.setItem('highScores', JSON.stringify([{'initials': 'cam', 'score': 90}]))

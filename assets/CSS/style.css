@@ -14,11 +14,19 @@ body {
     display: none;
 }
 
-/* #start button {
+#start button {
+    background-color: #b8bfff;
+    border: 0;
     display: block;
-    margin: auto;
-    padding: 10%;
-} */
+    margin: 500px auto;
+    padding: 20px 40px;
+    font-size: 4vw;
+}
+
+#start button:hover {
+    background-color: #474c7e;
+    cursor: pointer;
+}
 
 #question {
     text-align: center;
@@ -40,6 +48,7 @@ body {
 }
 
 #quiz button:hover {
+    background-color: #474c7e;
     cursor: pointer;
 }
 
