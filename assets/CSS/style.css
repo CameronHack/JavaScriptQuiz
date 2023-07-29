@@ -14,9 +14,11 @@ body {
     display: none;
 }
 
-#quiz {
-    /* background-color: aqua; */
-}
+/* #start button {
+    display: block;
+    margin: auto;
+    padding: 10%;
+} */
 
 #question {
     text-align: center;

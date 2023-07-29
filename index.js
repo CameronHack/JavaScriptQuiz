@@ -1,4 +1,5 @@
 // grabbing the location of 
+let startId = document.querySelector('#start')
 let quizDiv = document.querySelector('#quiz')
 let question = document.querySelector('#question')
 let questionButton1 = document.querySelector('#answer1')
@@ -13,17 +14,7 @@ let timer = 90
 // current question being displayed
 let currentQuestion = [0]
 
-// timer countdown
-timerH2.textContent = timer + ' seconds left'
-let timerId = setInterval(function(){
-    timer--
-    timerH2.textContent = timer + ' seconds left'
-    console.log(timer)
-    if (timer <= 0) {
-        clearInterval(timerId)
-        // gameOver()
-    }
-}, 1000)
+
 
 // questions
 let questions = [
@@ -41,12 +32,38 @@ let questions = [
 
 
 // placeholder
-// renderQuestion()
+
+
+startId.addEventListener('click', function(e){
+    if (e.target.matches('button')){
+        startQuiz()
+    }
+})
+
+function startQuiz(){
+    startId.setAttribute("class", "hidden")
+    quizDiv.setAttribute("class", "")
+    renderQuestion()
+    // timer countdown
+    timerH2.textContent = timer + ' seconds left'
+    let timerId = setInterval(function(){
+        timer--
+        timerH2.textContent = timer + ' seconds left'
+        console.log(timer)
+        if (timer <= 0) {
+            clearInterval(timerId)
+            // gameOver()
+        }
+    }, 1000)
+}
+
+function gameOver(){
+    startId.setAttribute("class", "hidden")
+    quizDiv.setAttribute("class", "")
 
 
 
-
-
+}
 
 
 
@@ -54,8 +71,7 @@ let questions = [
 
 
 function renderQuestion(){
-
-    quizDiv.setAttribute("class", "")
+    
     question.textContent = questions[currentQuestion].question
     questionButton1.textContent = questions[currentQuestion].answers[0]
     questionButton2.textContent = questions[currentQuestion].answers[1]
