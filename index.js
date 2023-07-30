@@ -1,6 +1,6 @@
 // grabbing locations
 const startId = document.querySelector('#start')
-const quizDiv = document.querySelector('#quiz')
+const quiz = document.querySelector('#quiz')
 const question = document.querySelector('#question')
 const questionButton1 = document.querySelector('#answer1')
 const questionButton2 = document.querySelector('#answer2')
@@ -8,6 +8,8 @@ const questionButton3 = document.querySelector('#answer3')
 const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
+const topScore = document.querySelector('#topScore')
+
 
 let highScores = JSON.parse(localStorage.getItem('highScores')) || []
 // starting time allowed for the test
@@ -39,7 +41,7 @@ function startQuiz() {
     // hides the start menu
     startId.setAttribute("class", "hidden")
     // unhides the quiz
-    quizDiv.setAttribute("class", "")
+    quiz.setAttribute("class", "")
     // renders the question when quiz starts
     renderQuestion()
 
@@ -54,7 +56,7 @@ function startQuiz() {
     }
 
     // event listener
-    quizDiv.addEventListener('click', function (e) {
+    quiz.addEventListener('click', function (e) {
         // making sure the click only applies to the button
         if (e.target.matches('button')) {
             if (questions[currentQuestion].correctAnswer === e.target.innerText) {
@@ -95,9 +97,11 @@ function startQuiz() {
 // game over screen
 function gameOver() {
     // hides the quiz
-    quizDiv.setAttribute("class", "hidden")
+    quiz.setAttribute("class", "hidden")
     // unhides game over screen
     endScreen.setAttribute("class", "")
+
+    // topScore.textContent = 
 
 }
 
