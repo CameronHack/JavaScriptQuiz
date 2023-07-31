@@ -109,7 +109,7 @@ function gameOver() {
     let highScores = JSON.parse(localStorage.getItem('highScores')) || []
     console.log(highScores)
     // displays last score
-    topScore.textContent = highScores.initials + highScores.score
+    topScore.textContent = 'Last attempt: ' + highScores[0].initials + ' ' + highScores[0].score
 
     // listener for the confirm button
     endScreen.addEventListener('click', function (e) {

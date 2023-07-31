@@ -9,7 +9,7 @@
     --primaryColor: #b8bfff;
     --secondaryColor: #6469a0;
     --complimentaryColor: ;
-    --fontColor: #131313;
+    --fontColor: #ffffff;
 
 }
 
@@ -18,9 +18,15 @@ body {
     background-color: #0f0f0f;
 }
 
-/* hidden class that I utilize to switch between start screen, quiz, and game over screen */
+/* hidden class that I utilize to switch between start screen, quiz, and highscore screen. I now realize how ridiculous(lets say unique) this is and should of started with other html docs but it works and ran out of time */
 .hidden {
     display: none;
+}
+
+/* fixes some overflow on the start and quiz screens due to my poor methodology as stated in the above comment */
+#start,
+#quiz {
+    overflow: hidden;
 }
 
 #start button,
@@ -51,6 +57,7 @@ body {
     text-align: center;
     font-size: 3rem;
     margin: 5% 0 5% 0;
+    color: var(--fontColor);
 }
 
 /* answer buttons */
@@ -79,10 +86,24 @@ body {
     text-align: center;
     font-size: 3rem;
     padding-top: 200px;
+    color: var(--fontColor);
 }
 
-/* detects if screen is in portrait */
-@media screen and (orientation:portrait) {
+/* final score */
+#endScreen h2,
+#endScreen ul {
+    color: var(--fontColor);
+    font-size: 3rem;
+    text-align: center;
+    padding: 120px 0;
+}
 
+
+/* detects if screen is in portrait */
+@media screen and (max-width: 768px) {
+    #endScreen h2,
+    #endScreen ul {
+        font-size: 2rem;
+    }
     
 }
