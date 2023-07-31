@@ -13,7 +13,7 @@ let topScore = document.querySelector('#topScore')
 let endScore = document.querySelector('#endScore')
 
 // starting time allowed for the test
-let timer = 120
+let timer = 150
 // current question being displayed
 let currentQuestion = [0]
 // questions generated from gpt3.5 (https://chat.openai.com/)
@@ -62,7 +62,7 @@ function startQuiz() {
             if (questions[currentQuestion].correctAnswer != e.target.innerText) {
                 timer -= 10
             }
-            
+
             // moves to the next question
             currentQuestion++
 

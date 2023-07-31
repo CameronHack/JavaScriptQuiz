@@ -6,7 +6,7 @@
 /* my variables */
 :root {
     /* color palette */
-    --primaryColor: #ffb8c7;
+    --primaryColor: #ffc0c2;
     --secondaryColor: #64a089;
     --fontColor: #ffffff;
     /* keep transitions consistent */
@@ -18,7 +18,7 @@ body {
     background-color: #0f0f0f;
 }
 
-/* hidden class that I utilize to switch between start screen, quiz, and highscore screen. I now realize how ridiculous(lets say unique) this is and should of started with other html docs but it works and ran out of time */
+/* hidden class that I utilize to switch between start screen, quiz, and quiz over screen. I now realize how ridiculous(lets say unique) this is and should of started with other html docs but it works and I am happy */
 .hidden {
     display: none;
 }
@@ -29,6 +29,7 @@ body {
     overflow: hidden;
 }
 
+/* smooth out buttons */
 #start button,
 #quiz button,
 #endScreen button {
@@ -42,7 +43,7 @@ body {
     border: 0;
     border-radius: 20px;
     display: block;
-    margin: 500px auto;
+    margin: 40vh auto;
     padding: 20px 40px;
     font-size: 4rem;
 }
@@ -53,14 +54,13 @@ body {
     background-color: var(--secondaryColor);
     cursor: pointer;
     scale: 110%;
-    transition: var(--globalTransition);
 }
 
 /* the question displayed at the top of the screen */
 #question {
     text-align: center;
     font-size: 3rem;
-    margin: 5% 0 5% 0;
+    margin: 5% 2%;
     color: var(--fontColor);
 }
 
@@ -73,7 +73,7 @@ body {
     width: 80vw;
     display: block;
     margin: 20px auto;
-    padding: 10px 0;
+    padding: 10px;
     font-size: 3rem;
 }
 
@@ -82,11 +82,11 @@ body {
     position: relative;
     text-align: center;
     font-size: 3rem;
-    padding-top: 200px;
+    padding-top: 40px;
     color: var(--fontColor);
 }
 
-/*  */
+/* end screen initial form */
 #endScreen div {
     display: flex;
     justify-content: center;
@@ -123,15 +123,27 @@ body {
 
 /* detects if screen is in portrait */
 @media screen and (max-width: 768px) {
+    /* the question displayed at the top of the screen */
+    #question {
+        font-size: 2rem;
+    }
+
+    /* answer buttons */
+    #quiz button {
+        border-radius: 10px;
+        font-size: 2rem;
+    }
+
     /* final score and last submission */
     #endScreen h2,
     #endScreen ul {
         font-size: 2rem;
     }
 
-    /* answer buttons */
-    #quiz button {
-        font-size: 2rem;
+    #endScreen input {
+        width: 100%;
     }
+
+
     
 }
