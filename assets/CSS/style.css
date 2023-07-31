@@ -6,11 +6,11 @@
 /* my variables */
 :root {
     /* color palette */
-    --primaryColor: #b8bfff;
-    --secondaryColor: #6469a0;
-    --complimentaryColor: ;
+    --primaryColor: #ffb8c7;
+    --secondaryColor: #64a089;
     --fontColor: #ffffff;
-
+    /*  */
+    --globalTransition: 100ms ease-out;
 }
 
 /* background color of the whole site */
@@ -30,8 +30,9 @@ body {
 }
 
 #start button,
-#quiz button {
-    transition: 100ms ease-out;
+#quiz button,
+#endScreen button {
+    transition: var(--globalTransition);
 }
 
 /* Start button on the start screen */
@@ -45,11 +46,13 @@ body {
     font-size: 4rem;
 }
 
-#start button:hover {
+#start button:hover,
+#quiz button:hover,
+#endScreen button:hover {
     background-color: var(--secondaryColor);
     cursor: pointer;
     scale: 110%;
-    transition: 100ms ease-out;
+    transition: var(--globalTransition);
 }
 
 /* the question displayed at the top of the screen */
@@ -73,13 +76,6 @@ body {
     font-size: 3rem;
 }
 
-#quiz button:hover {
-    background-color: var(--secondaryColor);
-    cursor: pointer;
-    scale: 110%;
-    transition: 100ms ease-out;
-}
-
 /* quiz timer */
 #timerH2 {
     position: relative;
@@ -87,6 +83,31 @@ body {
     font-size: 3rem;
     padding-top: 200px;
     color: var(--fontColor);
+}
+
+/*  */
+#endScreen div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#endScreen input {
+    height: 100px;
+    width: 400px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+#endScreen button {
+    background-color: var(--primaryColor);
+    border: 0;
+    border-radius: 20px;
+    height: 60px;
+    width: 140px;
+    font-size: 2rem;
+    margin: 20px;
 }
 
 /* final score */

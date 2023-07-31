@@ -9,6 +9,8 @@ const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
 let topScore = document.querySelector('#topScore')
+let endScore = document.querySelector('#endScore')
+
 
 
 
@@ -104,12 +106,14 @@ function gameOver() {
     quiz.setAttribute("class", "hidden")
     // unhides game over screen
     endScreen.setAttribute("class", "")
+
+    endScore.textContent = 'SCORE: ' + timer
     
     // grabs scores from local storage
     let highScores = JSON.parse(localStorage.getItem('highScores')) || []
     console.log(highScores)
     // displays last score
-    topScore.textContent = 'Last attempt: ' + highScores[0].initials + ' ' + highScores[0].score
+    topScore.textContent = 'Last submission: ' + highScores[0].initials + ' ' + highScores[0].score
 
     // listener for the confirm button
     endScreen.addEventListener('click', function (e) {
@@ -117,14 +121,15 @@ function gameOver() {
             let initialsInput = document.querySelector('#initialsInput')
             // sets users initials based on what they type into the input
             let initials = initialsInput.value
-            // does not submit score if input form is empty
-            if (initials === ""){
-                console.log('EMPTYYYYY')
-                return
-            } else {
-                // if user typed in initials this sets their score
+
+            // length of the users initials must not exceed 3 characters and does not submit score if input form is empty
+            if (initials.length <= 3 && initials != ""){
                 setScore()
-            }    
+            } else {
+                // if user types in more then 3 characters this alert appears
+                window.alert("Initials must be 3 characters or less");
+            }
+
             // adds user score to list of their previous scores
             function setScore() {
                 localStorage.setItem('highScores', JSON.stringify([{ 'initials': initials, 'score': timer }]))
