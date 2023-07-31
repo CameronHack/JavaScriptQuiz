@@ -8,10 +8,11 @@ const questionButton3 = document.querySelector('#answer3')
 const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
-const topScore = document.querySelector('#topScore')
+let topScore = document.querySelector('#topScore')
 
 
-let highScores = JSON.parse(localStorage.getItem('highScores')) || []
+
+
 // starting time allowed for the test
 let timer = 90
 // current question being displayed
@@ -55,7 +56,7 @@ function startQuiz() {
         console.log('render question' + questions[currentQuestion].correctAnswer)
     }
 
-    // event listener
+    // event listener on quiz screen
     quiz.addEventListener('click', function (e) {
         // making sure the click only applies to the button
         if (e.target.matches('button')) {
@@ -71,6 +72,7 @@ function startQuiz() {
 
             // if you answer all the questions and havent run out of time this ends the game
             if (currentQuestion > questions.length - 1) {
+                clearInterval(timerId)
                 gameOver()
             } else {
                 // rerenders the question
@@ -84,6 +86,7 @@ function startQuiz() {
     let timerId = setInterval(function () {
         // -1 off the timer every second
         timer--
+        console.log(timer)
         // displays the timer as text
         timerH2.textContent = timer + ' seconds left'
         // if you run out of time before you answer all questions it ends the game
@@ -96,15 +99,39 @@ function startQuiz() {
 
 // game over screen
 function gameOver() {
+    console.log('final score: ' + timer)
     // hides the quiz
     quiz.setAttribute("class", "hidden")
     // unhides game over screen
     endScreen.setAttribute("class", "")
+    
+    // grabs scores from local storage
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || []
+    console.log(highScores)
+    // displays last score
+    topScore.textContent = highScores.initials + highScores.score
 
-    // topScore.textContent = 
-
+    // listener for the confirm button
+    endScreen.addEventListener('click', function (e) {
+        if (e.target.matches('button')) {
+            let initialsInput = document.querySelector('#initialsInput')
+            // sets users initials based on what they type into the input
+            let initials = initialsInput.value
+            // does not submit score if input form is empty
+            if (initials === ""){
+                console.log('EMPTYYYYY')
+                return
+            } else {
+                // if user typed in initials this sets their score
+                setScore()
+            }    
+            // adds user score to list of their previous scores
+            function setScore() {
+                localStorage.setItem('highScores', JSON.stringify([{ 'initials': initials, 'score': timer }]))
+            }    
+        }    
+    })    
 }
 
 
 
-// localStorage.setItem('highScores', JSON.stringify([{'initials': 'what the user enters', 'score': time left on timer}]))
