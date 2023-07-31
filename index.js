@@ -101,7 +101,6 @@ function startQuiz() {
 
 // game over screen
 function gameOver() {
-    console.log('final score: ' + timer)
     // hides the quiz
     quiz.setAttribute("class", "hidden")
     // unhides game over screen

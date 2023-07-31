@@ -38,6 +38,7 @@ body {
 /* Start button on the start screen */
 #start button {
     background-color: var(--primaryColor);
+    color: var(--textColor);
     border: 0;
     border-radius: 20px;
     display: block;
@@ -66,7 +67,7 @@ body {
 /* answer buttons */
 #quiz button {
     background-color: var(--primaryColor);
-    color: var(--fontColor);
+    color: var(--textColor);
     border: 0;
     border-radius: 100px;
     width: 80vw;
