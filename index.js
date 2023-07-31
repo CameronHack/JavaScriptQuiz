@@ -9,6 +9,7 @@ const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
 let topScore = document.querySelector('#topScore')
+let endScore = document.querySelector('#endScore')
 
 
 
@@ -99,17 +100,19 @@ function startQuiz() {
 
 // game over screen
 function gameOver() {
-    console.log('final score: ' + timer)
     // hides the quiz
     quiz.setAttribute("class", "hidden")
     // unhides game over screen
     endScreen.setAttribute("class", "")
+
+    // displays this attempts score
+    endScore.textContent = 'SCORE: ' + timer
     
     // grabs scores from local storage
     let highScores = JSON.parse(localStorage.getItem('highScores')) || []
     console.log(highScores)
     // displays last score
-    topScore.textContent = highScores.initials + highScores.score
+    topScore.textContent = 'Last Score: ' + highScores[0].initials + ' ' + highScores[0].score
 
     // listener for the confirm button
     endScreen.addEventListener('click', function (e) {

@@ -6,11 +6,12 @@
 /* my variables */
 :root {
     /* color palette */
-    --primaryColor: #b8bfff;
+    --primaryColor: #21243d;
     --secondaryColor: #6469a0;
     --complimentaryColor: ;
-    --fontColor: #131313;
-
+    --textColor: #ffffff;
+    /* keep all my transitions uniform */
+    --globalTransition: 100ms ease-out;
 }
 
 /* background color of the whole site */
@@ -23,14 +24,16 @@ body {
     display: none;
 }
 
+/* some global transitions */
 #start button,
 #quiz button {
-    transition: 100ms ease-out;
+    transition: var(--globalTransition);
 }
 
 /* Start button on the start screen */
 #start button {
     background-color: var(--primaryColor);
+    color: var(--textColor);
     border: 0;
     border-radius: 20px;
     display: block;
@@ -43,7 +46,7 @@ body {
     background-color: var(--secondaryColor);
     cursor: pointer;
     scale: 110%;
-    transition: 100ms ease-out;
+    transition: var(--globalTransition);
 }
 
 /* the question displayed at the top of the screen */
@@ -51,12 +54,13 @@ body {
     text-align: center;
     font-size: 3rem;
     margin: 5% 0 5% 0;
+    color: var(--textColor);
 }
 
 /* answer buttons */
 #quiz button {
     background-color: var(--primaryColor);
-    color: var(--fontColor);
+    color: var(--textColor);
     border: 0;
     border-radius: 100px;
     width: 80vw;
@@ -70,7 +74,7 @@ body {
     background-color: var(--secondaryColor);
     cursor: pointer;
     scale: 110%;
-    transition: 100ms ease-out;
+    transition: var(--globalTransition);
 }
 
 /* quiz timer */
@@ -79,6 +83,34 @@ body {
     text-align: center;
     font-size: 3rem;
     padding-top: 200px;
+    color: var(--textColor);
+}
+
+#endScreen {
+
+}
+
+/* Final score */
+#endScreen h2 {
+    color: var(--textColor);
+    text-align: center;
+    padding: 200px;
+    font-size: 3rem;
+}
+
+#endscreen input,
+#endScreen button {
+    left: 2000px;
+    background-color: #21243d;
+
+}
+
+/* Last score */
+#endScreen li {
+    color: var(--textColor);
+    text-align: center;
+    padding: 100px;
+    font-size: 2rem;
 }
 
 /* detects if screen is in portrait */
