@@ -9,7 +9,7 @@
     --primaryColor: #ffb8c7;
     --secondaryColor: #64a089;
     --fontColor: #ffffff;
-    /*  */
+    /* keep transitions consistent */
     --globalTransition: 100ms ease-out;
 }
 

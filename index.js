@@ -75,7 +75,7 @@ function startQuiz() {
             // if you answer all the questions and havent run out of time this ends the game
             if (currentQuestion > questions.length - 1) {
                 clearInterval(timerId)
-                gameOver()
+                quizOver()
             } else {
                 // rerenders the question
                 renderQuestion()
@@ -94,13 +94,13 @@ function startQuiz() {
         // if you run out of time before you answer all questions it ends the game
         if (timer <= 0) {
             clearInterval(timerId)
-            gameOver()
+            quizOver()
         }
     }, 1000)
 }
 
 // game over screen
-function gameOver() {
+function quizOver() {
     // hides the quiz
     quiz.setAttribute("class", "hidden")
     // unhides game over screen
