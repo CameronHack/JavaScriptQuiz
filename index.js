@@ -11,26 +11,23 @@ const endScreen = document.querySelector('#endScreen')
 let topScore = document.querySelector('#topScore')
 let endScore = document.querySelector('#endScore')
 
-
-
-
-
 // starting time allowed for the test
-let timer = 90
+let timer = 120
 // current question being displayed
 let currentQuestion = [0]
-// question array
+// questions generated from gpt3.5 (https://chat.openai.com/)
 let questions = [
-    { question: "lorem1", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem2", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem2" },
-    { question: "lorem3", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem3" },
-    { question: "lorem4", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem4" },
-    { question: "lorem5", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem6", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem7", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem8", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem9", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" },
-    { question: "lorem10", answers: ["lorem1", "lorem2", "lorem3", "lorem4"], correctAnswer: "lorem1" }
+    { question: "Which of the following is NOT a primitive data type in JavaScript?", answers: ["a) string", "b) number", "c) array", "d) boolean"], correctAnswer: "c) array" },
+    { question: "How do you create a new array in JavaScript?", answers: ["a) var myArray = [];", "b) var myArray = ();", "c) array myArray = [];", "d) new Array myArray[];"], correctAnswer: "a) var myArray = [];" },
+    { question: "What does the === operator in JavaScript check for?", answers: ["a) Equality, allowing type coercion", "b) Equality, without type coercion", "c) Assignment", "d) Inequality"], correctAnswer: "b) Equality, without type coercion" },
+    { question: "What is the purpose of the setTimeout() function in JavaScript?", answers: ["a) To execute a function immediately", "b) To pause the execution of a function", "c) To execute a function after a specified delay", "d) To repeat a function at regular intervals"], correctAnswer: "c) To execute a function after a specified delay" },
+    { question: "How do you access the number of elements in an array called myArray?", answers: ["a) myArray.size()", "b) myArray.length", "c) myArray.count", "d) myArray.size"], correctAnswer: "b) myArray.length" },
+    { question: "What does the typeof operator return for an array?", answers: ["a) array", "b) object", "c) arrayobject", "d) collection"], correctAnswer: "b) object" },
+    { question: "Which keyword is used to declare a constant variable in JavaScript?", answers: ["a) let", "b) var", "c) const", "d) constVar"], correctAnswer: "c) const" },
+    { question: "What is the correct way to write a single-line comment in JavaScript?", answers: ["a) // This is a comment", "b) <!-- This is a comment -->", "c) /* This is a comment */", "d) # This is a comment"], correctAnswer: "a) // This is a comment" },
+    { question: "What does the NaN value represent in JavaScript?", answers: ["a) Not a Node", "b) Not a Null", "c) Not a Number", "d) No Available Number"], correctAnswer: "c) Not a Number" },
+    { question: "What is the purpose of the splice() method in JavaScript arrays?", answers: ["a) To add elements to the end of an array", "b) To remove elements from an array", "c) To sort the elements of an array", "d) To merge two arrays"], correctAnswer: "b) To remove elements from an array" },
+    { question: "What is the purpose of the querySelector() method in JavaScript?", answers: ["a) To select the first element that matches a specified CSS selector", "b) To modify the query parameters of a URL", "c) To create a new HTML element in the DOM", "d) To retrieve data from a remote server"], correctAnswer: "a) To select the first element that matches a specified CSS selector" }
 ]
 
 // when you click the start quiz button it calls the startQuiz function
@@ -136,6 +133,3 @@ function quizOver() {
         }    
     })    
 }
-
-
-

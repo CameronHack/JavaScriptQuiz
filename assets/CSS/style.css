@@ -111,7 +111,7 @@ body {
     margin: 20px;
 }
 
-/* final score */
+/* final score and last submission */
 #endScreen h2,
 #endScreen ul {
     color: var(--fontColor);
@@ -123,8 +123,14 @@ body {
 
 /* detects if screen is in portrait */
 @media screen and (max-width: 768px) {
+    /* final score and last submission */
     #endScreen h2,
     #endScreen ul {
+        font-size: 2rem;
+    }
+
+    /* answer buttons */
+    #quiz button {
         font-size: 2rem;
     }
     
