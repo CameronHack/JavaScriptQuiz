@@ -8,6 +8,7 @@ const questionButton3 = document.querySelector('#answer3')
 const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
+const endForm = document.querySelector('#endForm')
 let topScore = document.querySelector('#topScore')
 let endScore = document.querySelector('#endScore')
 
@@ -52,20 +53,16 @@ function startQuiz() {
         questionButton2.textContent = questions[currentQuestion].answers[1]
         questionButton3.textContent = questions[currentQuestion].answers[2]
         questionButton4.textContent = questions[currentQuestion].answers[3]
-        console.log('render question' + questions[currentQuestion].correctAnswer)
     }
 
     // event listener on quiz screen
     quiz.addEventListener('click', function (e) {
         // making sure the click only applies to the button
         if (e.target.matches('button')) {
-            if (questions[currentQuestion].correctAnswer === e.target.innerText) {
-                console.log('TRUE')
-            } else {
+            if (questions[currentQuestion].correctAnswer != e.target.innerText) {
                 timer -= 10
-                console.log('FALSE')
             }
-
+            
             // moves to the next question
             currentQuestion++
 
@@ -85,7 +82,6 @@ function startQuiz() {
     let timerId = setInterval(function () {
         // -1 off the timer every second
         timer--
-        console.log(timer)
         // displays the timer as text
         timerH2.textContent = timer + ' seconds left'
         // if you run out of time before you answer all questions it ends the game
@@ -102,34 +98,33 @@ function quizOver() {
     quiz.setAttribute("class", "hidden")
     // unhides game over screen
     endScreen.setAttribute("class", "")
-
+    // displays users final score
     endScore.textContent = 'SCORE: ' + timer
     
     // grabs scores from local storage
     let highScores = JSON.parse(localStorage.getItem('highScores')) || []
-    console.log(highScores)
     // displays last score
     topScore.textContent = 'Last submission: ' + highScores[0].initials + ' ' + highScores[0].score
-
-    // listener for the confirm button
-    endScreen.addEventListener('click', function (e) {
-        if (e.target.matches('button')) {
-            let initialsInput = document.querySelector('#initialsInput')
-            // sets users initials based on what they type into the input
-            let initials = initialsInput.value
-
-            // length of the users initials must not exceed 3 characters and does not submit score if input form is empty
-            if (initials.length <= 3 && initials != ""){
-                setScore()
-            } else {
-                // if user types in more then 3 characters this alert appears
-                window.alert("Initials must be 3 characters or less");
-            }
-
-            // adds user score to list of their previous scores
-            function setScore() {
-                localStorage.setItem('highScores', JSON.stringify([{ 'initials': initials, 'score': timer }]))
-            }    
-        }    
-    })    
 }
+
+// listener for the confirm button
+endForm.addEventListener('click', function (e) {
+    if (e.target.matches('button')) {
+        let initialsInput = document.querySelector('#initialsInput')
+        // sets users initials based on what they type into the input
+        let initials = initialsInput.value
+
+        // length of the users initials must not exceed 3 characters and does not submit score if input form is empty
+        if (initials.length <= 3 && initials != ""){
+            setScore()
+        } else {
+            // if user types in more then 3 characters this alert appears
+            window.alert("Initials must be 3 characters or less");
+        }
+
+        // adds user score to list of their previous scores
+        function setScore() {
+            localStorage.setItem('highScores', JSON.stringify([{ 'initials': initials, 'score': timer }]))
+        }
+    }
+})
