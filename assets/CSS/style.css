@@ -146,7 +146,7 @@ h2 {
 .highscore button:hover {
     background-color: #ff8d8d;
     cursor: pointer;
-    scale: 120%;
+    scale: 110%;
 }
 
 /* detects if screen is in portrait */

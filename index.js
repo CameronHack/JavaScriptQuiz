@@ -1,4 +1,3 @@
-// grabbing locations
 const startId = document.querySelector('#start')
 const quiz = document.querySelector('#quiz')
 const question = document.querySelector('#question')
@@ -9,13 +8,13 @@ const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
 const endForm = document.querySelector('#endForm')
+// users final score
 let endScore = document.querySelector('#endScore')
+// high score screen list elements
 let highScoresList = document.querySelector('#highScoresUl')
-
 // grabs scores from local storage
 let highScores = JSON.parse(localStorage.getItem('highScores')) || []
-
-// starting time allowed for the test
+// starting time allowed for the test, 150 seems to be good for this quiz
 let timer = 150
 // current question being displayed
 let currentQuestion = [0]
@@ -34,13 +33,14 @@ let questions = [
     { question: "What is the purpose of the querySelector() method in JavaScript?", answers: ["a) To select the first element that matches a specified CSS selector", "b) To modify the query parameters of a URL", "c) To create a new HTML element in the DOM", "d) To retrieve data from a remote server"], correctAnswer: "a) To select the first element that matches a specified CSS selector" }
 ]
 
-// when you click the start quiz button it calls the startQuiz function
+// Listener for the start button
 startId.addEventListener('click', function (e) {
     if (e.target.matches('button')) {
         startQuiz()
     }
 })
 
+// quiz begins
 function startQuiz() {
     // hides the start menu
     startId.setAttribute("class", "hidden")
@@ -58,10 +58,10 @@ function startQuiz() {
         questionButton4.textContent = questions[currentQuestion].answers[3]
     }
 
-    // event listener on quiz screen
+    // Listener for answer buttons
     quiz.addEventListener('click', function (e) {
-        // making sure the click only applies to the button
         if (e.target.matches('button')) {
+            // incorrect answer
             if (questions[currentQuestion].correctAnswer != e.target.innerText) {
                 timer -= 10
             }
@@ -69,12 +69,13 @@ function startQuiz() {
             // moves to the next question
             currentQuestion++
 
-            // if you answer all the questions and havent run out of time this ends the game
+            // if you answer all the questions and have not run out of time this ends the quiz
             if (currentQuestion > questions.length - 1) {
+                // stops timer
                 clearInterval(timerId)
                 quizOver()
             } else {
-                // rerenders the question
+                // renders the next question
                 renderQuestion()
             }
         }
@@ -87,8 +88,9 @@ function startQuiz() {
         timer--
         // displays the timer as text
         timerH2.textContent = timer + ' seconds left'
-        // if you run out of time before you answer all questions it ends the game
+        // if user runs out of time before they answer all questions it ends the quiz
         if (timer <= 0) {
+            // stops timer
             clearInterval(timerId)
             quizOver()
         }
@@ -115,10 +117,10 @@ endForm.addEventListener('click', function (e) {
         // length of the users initials must not exceed 3 characters and does not submit score if input form is empty
         if (initials.length <= 3 && initials != "") {
             setScore()
-            // allows the button to take the user to the highscores page after confirmation
+            // allows the button to take the user to the highscores page ONLY AFTER correct confirmation
             document.querySelector("#scoreConfirm").setAttribute("href", "./highscores.html")
         } else {
-            // if user types in more then 3 characters this alert appears
+            // if user types in more then 3 characters or form field is empty this alert appears
             window.alert("Initials must be 3 characters or less");
         }
 
