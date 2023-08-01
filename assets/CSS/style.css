@@ -23,7 +23,7 @@ body {
     display: none;
 }
 
-/* fixes some overflow on the start and quiz screens due to my poor methodology as stated in the above comment */
+/* fixes some overflow on the start and quiz screens */
 #start,
 #quiz {
     overflow: hidden;
@@ -60,7 +60,7 @@ body {
 #question {
     text-align: center;
     font-size: 3rem;
-    margin: 5% 2%;
+    margin: 5%;
     color: var(--fontColor);
 }
 
@@ -94,13 +94,18 @@ body {
     flex-direction: column;
 }
 
+/* initials input */
 #endScreen input {
+    background-color: #2e2e2e;
+    color: var(--fontColor);
+    border: 0;
     height: 100px;
     width: 400px;
     font-size: 4rem;
     text-align: center;
 }
 
+/* confirm button */
 #endScreen button {
     background-color: var(--primaryColor);
     border: 0;
@@ -108,7 +113,7 @@ body {
     height: 60px;
     width: 140px;
     font-size: 2rem;
-    margin: 20px;
+    margin: 30px;
 }
 
 /* final score and High Scores */
@@ -127,33 +132,36 @@ h2 {
     flex-direction: column-reverse;
 }
 
+/* list of all user scores */
 #highScoresUl li {
     color: var(--fontColor);
     font-size: 2rem;
     padding: 20px 0;
 }
 
+/* clear data button */
 .highscore button {
     background-color: #ececec;
     border: 0;
     border-radius: 20px;
     display: block;
     margin: 60px auto;
-    padding: 20px;
-    font-size: 2rem;
+    padding: 15px;
+    font-size: 1.4rem;
 }
 
 .highscore button:hover {
-    background-color: #ff8d8d;
+    background-color: #ca5050;
     cursor: pointer;
     scale: 110%;
 }
 
-/* detects if screen is in portrait */
 @media screen and (max-width: 768px) {
+
     /* the question displayed at the top of the screen */
     #question {
         font-size: 2rem;
+        margin: 10% 4%;
     }
 
     /* answer buttons */
@@ -162,15 +170,13 @@ h2 {
         font-size: 2rem;
     }
 
-    /* final score and High Scores */
-    #endScreen h2 {
-        font-size: 2rem;
-    }
-
+    /* initials input */
     #endScreen input {
         width: 100%;
     }
 
-
-    
+    /* final score and High Scores */
+    .highscore h2 {
+        padding: 60px 0 20px 0;
+    }
 }
