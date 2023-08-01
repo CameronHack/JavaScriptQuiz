@@ -10,3 +10,5 @@ This JavaScript quiz was created to help those who are learing JS to test and re
 
 - Eleven JavaScript fundamental questions
 - Score submission
+
+![JavaScriptQuiz](https://github.com/CameronHack/JavaScriptQuiz/assets/139071966/6007c188-717e-4886-bd85-0567df0bbba0)
