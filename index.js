@@ -9,8 +9,11 @@ const questionButton4 = document.querySelector('#answer4')
 const timerH2 = document.querySelector('#timerH2')
 const endScreen = document.querySelector('#endScreen')
 const endForm = document.querySelector('#endForm')
-let topScore = document.querySelector('#topScore')
 let endScore = document.querySelector('#endScore')
+let highScoresList = document.querySelector('#highScoresUl')
+
+// grabs scores from local storage
+let highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
 // starting time allowed for the test
 let timer = 150
@@ -100,11 +103,6 @@ function quizOver() {
     endScreen.setAttribute("class", "")
     // displays users final score
     endScore.textContent = 'SCORE: ' + timer
-    
-    // grabs scores from local storage
-    let highScores = JSON.parse(localStorage.getItem('highScores')) || []
-    // displays last score
-    topScore.textContent = 'Last submission: ' + highScores[0].initials + ' ' + highScores[0].score
 }
 
 // listener for the confirm button
@@ -115,8 +113,10 @@ endForm.addEventListener('click', function (e) {
         let initials = initialsInput.value
 
         // length of the users initials must not exceed 3 characters and does not submit score if input form is empty
-        if (initials.length <= 3 && initials != ""){
+        if (initials.length <= 3 && initials != "") {
             setScore()
+            // allows the button to take the user to the highscores page after confirmation
+            document.querySelector("#scoreConfirm").setAttribute("href", "./highscores.html")
         } else {
             // if user types in more then 3 characters this alert appears
             window.alert("Initials must be 3 characters or less");
@@ -124,7 +124,8 @@ endForm.addEventListener('click', function (e) {
 
         // adds user score to list of their previous scores
         function setScore() {
-            localStorage.setItem('highScores', JSON.stringify([{ 'initials': initials, 'score': timer }]))
+            highScores.push({ 'initials': initials, 'score': timer })
+            localStorage.setItem('highScores', JSON.stringify(highScores))
         }
     }
 })

@@ -112,14 +112,16 @@ body {
 }
 
 /* final score and last submission */
-#endScreen h2,
-#endScreen ul {
+#endScreen h2 {
     color: var(--fontColor);
     font-size: 3rem;
     text-align: center;
     padding: 120px 0;
 }
 
+#highScoresUl {
+    color: var(--fontColor);
+}
 
 /* detects if screen is in portrait */
 @media screen and (max-width: 768px) {
@@ -135,8 +137,7 @@ body {
     }
 
     /* final score and last submission */
-    #endScreen h2,
-    #endScreen ul {
+    #endScreen h2 {
         font-size: 2rem;
     }
 
