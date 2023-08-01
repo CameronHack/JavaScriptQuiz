@@ -5,9 +5,9 @@
 
 /* my variables */
 :root {
-    /* color palette */
-    --primaryColor: #ffc0c2;
-    --secondaryColor: #64a089;
+    /* color palette (inspired by mint chocolate chip ice cream) */
+    --primaryColor: #d0fff1;
+    --secondaryColor: #e0c0a2;
     --fontColor: #ffffff;
     /* keep transitions consistent */
     --globalTransition: 100ms ease-out;
